@@ -7,6 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase
 from werkzeug.security import generate_password_hash
 from extensions import db, login_manager
+from dotenv import load_dotenv
 
 
 # Configure logging
@@ -29,7 +30,7 @@ Session(app)
 # Configure the database
 
 # MySQL database URI
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:1234@localhost/aiStudy' # 'mysql+pymysql://ursername:password@localhost/database_name'
+app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://{os.getenv('DB_USERNAME')}:{os.getenv('DB_PASSWORD')}@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}" # 'mysql+pymysql://ursername:password@localhost/database_name'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Initialize extensions with the app
