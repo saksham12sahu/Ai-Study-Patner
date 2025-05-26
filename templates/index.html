@@ -1,0 +1,172 @@
+{% extends "layout.html" %} {% block title %}Home{% endblock %} {% block content
+%}
+<div class="row align-items-center my-5">
+  <div class="col-lg-6">
+    <h1 class="display-4 fw-bold mb-4">AI Study Partner</h1>
+    <h2 class="h4 text-secondary mb-4">Your Smart Learning Companion</h2>
+    <p class="lead">
+      Enhance your learning experience with AI-powered tools designed to help
+      you study smarter, not harder.
+    </p>
+    <div class="d-grid gap-3 d-sm-flex mt-4">
+      <a href="/flashcards" class="btn btn-primary btn-lg px-4 gap-3">
+        <i class="fas fa-clone me-2"></i> Create Flashcards
+      </a>
+      <a href="/chatbot" class="btn btn-outline-secondary btn-lg px-4">
+        <i class="fas fa-robot me-2"></i> Ask AI Tutor
+      </a>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="card bg-dark shadow-lg border-0 rounded-4 mt-4 mt-lg-0">
+      <div class="card-body p-5">
+        <div class="text-center mb-4">
+          <i class="fas fa-brain fa-4x text-primary mb-3"></i>
+          <h3 class="card-title">Getting Started</h3>
+        </div>
+        <div class="card-text">
+          <div class="list-group list-group-flush">
+            <a
+              href="/flashcards"
+              class="list-group-item list-group-item-action bg-transparent border-bottom py-3"
+            >
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">
+                  <i class="fas fa-clone text-primary me-2"></i> AI Flashcard
+                  Generator
+                </h5>
+                <small><i class="fas fa-chevron-right"></i></small>
+              </div>
+              <p class="mb-1">
+                Convert your notes into smart flashcards instantly
+              </p>
+            </a>
+            <a
+              href="/quizzes"
+              class="list-group-item list-group-item-action bg-transparent border-bottom py-3"
+            >
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">
+                  <i class="fas fa-question-circle text-success me-2"></i> Smart
+                  Quizzes
+                </h5>
+                <small><i class="fas fa-chevron-right"></i></small>
+              </div>
+              <p class="mb-1">Test your knowledge with adaptive difficulty</p>
+            </a>
+            <a
+              href="/chatbot"
+              class="list-group-item list-group-item-action bg-transparent border-bottom py-3"
+            >
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">
+                  <i class="fas fa-robot text-info me-2"></i> AI Tutor
+                </h5>
+                <small><i class="fas fa-chevron-right"></i></small>
+              </div>
+              <p class="mb-1">
+                Get answers and explanations from your AI tutor
+              </p>
+            </a>
+            <a
+              href="/planner"
+              class="list-group-item list-group-item-action bg-transparent border-bottom py-3"
+            >
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">
+                  <i class="fas fa-calendar-alt text-warning me-2"></i> Study
+                  Planner
+                </h5>
+                <small><i class="fas fa-chevron-right"></i></small>
+              </div>
+              <p class="mb-1">Organize your study schedule effectively</p>
+            </a>
+            <a
+              href="/progress"
+              class="list-group-item list-group-item-action bg-transparent py-3"
+            >
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">
+                  <i class="fas fa-chart-line text-danger me-2"></i> Progress
+                  Tracker
+                </h5>
+                <small><i class="fas fa-chevron-right"></i></small>
+              </div>
+              <p class="mb-1">Visualize your learning progress</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row my-5 g-4">
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm border-0">
+      <div class="card-body text-center p-4">
+        <div
+          class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3"
+        >
+          <i class="fas fa-lightbulb text-warning"></i>
+        </div>
+        <h3 class="card-title h5">Learn Smarter</h3>
+        <p class="card-text">
+          Our AI analyzes your content to create effective study materials
+          focused on key concepts.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm border-0">
+      <div class="card-body text-center p-4">
+        <div
+          class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3"
+        >
+          <i class="fas fa-clock text-info"></i>
+        </div>
+        <h3 class="card-title h5">Save Time</h3>
+        <p class="card-text">
+          Focus your study time on what matters most with AI-generated materials
+          and personalized schedules.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm border-0">
+      <div class="card-body text-center p-4">
+        <div
+          class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3"
+        >
+          <i class="fas fa-chart-bar text-success"></i>
+        </div>
+        <h3 class="card-title h5">Track Progress</h3>
+        <p class="card-text">
+          Visualize your learning journey with detailed analytics and adapt your
+          strategy accordingly.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="p-5 mb-4 rounded-3 cta-section bg-dark text-light">
+  <div class="container-fluid py-5">
+    <h2 class="display-6 fw-bold">Ready to revolutionize your study habits?</h2>
+    <p class="col-md-8 fs-5">
+      Start using AI Study Partner today and experience the difference that
+      intelligent learning tools can make.
+    </p>
+    <div class="d-flex gap-3 mt-4">
+      <a href="/flashcards" class="btn btn-primary btn-lg px-4">
+        <i class="fas fa-clone me-2"></i> Create Flashcards
+      </a>
+      <a href="/quizzes" class="btn btn-outline-light btn-lg px-4">
+        <i class="fas fa-question-circle me-2"></i> Take a Quiz
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}

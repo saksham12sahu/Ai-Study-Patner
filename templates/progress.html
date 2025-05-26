@@ -1,0 +1,110 @@
+{% extends "layout.html" %}
+
+{% block title %}Progress Tracker{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Progress Tracker</h1>
+
+<div class="row">
+    <div class="col-lg-3 mb-4">
+        <div class="card shadow-sm bg-primary text-white">
+            <div class="card-body text-center">
+                <h3 class="display-6 fw-bold" id="flashcards-created">0</h3>
+                <p class="card-text">Flashcards Created</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-3 mb-4">
+        <div class="card shadow-sm bg-success text-white">
+            <div class="card-body text-center">
+                <h3 class="display-6 fw-bold" id="mastery-rate">0%</h3>
+                <p class="card-text">Mastery Rate</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-3 mb-4">
+        <div class="card shadow-sm bg-info text-white">
+            <div class="card-body text-center">
+                <h3 class="display-6 fw-bold" id="quizzes-completed">0</h3>
+                <p class="card-text">Quizzes Completed</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-3 mb-4">
+        <div class="card shadow-sm bg-warning text-white">
+            <div class="card-body text-center">
+                <h3 class="display-6 fw-bold" id="study-time">0</h3>
+                <p class="card-text">Study Minutes</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-8 mb-4">
+        <div class="card shadow-sm">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Study Time by Topic</h5>
+            </div>
+            <div class="card-body">
+                <canvas id="topics-chart" height="300"></canvas>
+                <div id="no-topics-data" class="text-center py-5 d-none">
+                    <i class="fas fa-chart-pie fa-4x text-secondary mb-3"></i>
+                    <h3>No Topic Data Yet</h3>
+                    <p class="text-muted">Data will appear as you study different topics.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 mb-4">
+        <div class="card shadow-sm">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Quiz Performance</h5>
+            </div>
+            <div class="card-body">
+                <canvas id="quiz-chart" height="300"></canvas>
+                <div id="no-quiz-data" class="text-center py-5 d-none">
+                    <i class="fas fa-chart-line fa-4x text-secondary mb-3"></i>
+                    <h3>No Quiz Data Yet</h3>
+                    <p class="text-muted">Complete quizzes to see your performance.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 mb-4">
+        <div class="card shadow-sm">
+            <div class="card-header">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-lightbulb me-2"></i> Study Recommendations
+                </h5>
+            </div>
+            <div class="card-body">
+                <div id="recommendations-container">
+                    <div class="list-group list-group-flush" id="recommendations-list">
+                        <!-- Recommendations will be added here dynamically -->
+                    </div>
+                    
+                    <div id="no-recommendations" class="text-center py-4">
+                        <i class="fas fa-lightbulb fa-3x text-warning mb-3"></i>
+                        <h3>Recommendations Coming Soon</h3>
+                        <p class="text-muted">
+                            Continue using the app to generate personalized study recommendations.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/progress.js') }}"></script>
+{% endblock %}

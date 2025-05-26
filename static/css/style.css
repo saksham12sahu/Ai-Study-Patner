@@ -1,0 +1,114 @@
+/* Global Styles */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+/* Card enhancements */
+.card {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Feature icons */
+.feature-icon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.75rem;
+}
+
+/* CTA section */
+.cta-section {
+    background: linear-gradient(45deg, #2b3035, #212529);
+    border-radius: 1rem;
+}
+
+/* Flashcard styles are in flashcards.html for scope */
+
+/* Quiz styles */
+.quiz-card .badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.question-card {
+    border-left: 4px solid var(--bs-primary);
+    padding-left: 1rem;
+    margin-bottom: 2rem;
+}
+
+.option-label {
+    display: block;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: var(--bs-dark);
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out;
+}
+
+.option-label:hover {
+    background-color: var(--bs-secondary);
+}
+
+.option-input:checked + .option-label {
+    background-color: var(--bs-primary);
+    color: white;
+}
+
+.option-input {
+    display: none;
+}
+
+.review-correct {
+    border-left: 4px solid var(--bs-success);
+}
+
+.review-incorrect {
+    border-left: 4px solid var(--bs-danger);
+}
+
+/* Study plan styles */
+.plan-card {
+    transition: transform 0.2s;
+}
+
+.plan-card:hover {
+    transform: translateY(-3px);
+}
+
+.completed-task {
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+/* Progress tracker styles */
+#topics-chart, #quiz-chart {
+    max-height: 300px;
+}
+
+.recommendation-item {
+    border-left: 4px solid var(--bs-info);
+    padding-left: 1rem;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 2.5rem;
+    }
+    
+    .display-6 {
+        font-size: 1.5rem;
+    }
+}

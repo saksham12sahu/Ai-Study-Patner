@@ -1,0 +1,115 @@
+{% extends "layout.html" %}
+
+{% block title %}Quizzes{% endblock %}
+
+{% block content %}
+<meta charset="UTF-8">
+<h1 class="mb-4">Smart Quizzes</h1>
+
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <h3 class="card-title">Generate a Quiz</h3>
+                <p class="card-text">
+                    Create an AI-generated quiz on any topic with adaptive difficulty to test your knowledge effectively.
+                </p>
+                
+                <form id="generate-quiz-form">
+                    <div class="mb-3">
+                        <label for="quiz-topic" class="form-label">Quiz Topic</label>
+                        <input type="text" class="form-control" id="quiz-topic" 
+                            placeholder="E.g., World War II, Cell Biology, Calculus" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="quiz-difficulty" class="form-label">Difficulty Level: <span id="difficulty-value">3</span>/5</label>
+                        <input type="range" class="form-range" min="1" max="5" value="3" id="quiz-difficulty">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="quiz-questions" class="form-label">Number of Questions</label>
+                        <select class="form-select" id="quiz-questions" required>
+                            <option value="5" selected>5 questions</option>
+                            <option value="10">10 questions</option>
+                            <option value="15">15 questions</option>
+                        </select>
+                    </div>
+                    
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary" id="generate-quiz-btn">
+                            <span class="spinner-border spinner-border-sm d-none me-2" id="quiz-spinner" role="status" aria-hidden="true"></span>
+                            <i class="fas fa-question-circle me-2"></i> Generate Quiz
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="quizzes-container">
+    <h2 class="mt-5 mb-4">Your Quizzes</h2>
+    
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="quizzes-list">
+        <!-- Quiz cards will be added here dynamically -->
+    </div>
+    
+    <div id="no-quizzes" class="text-center my-5 py-5">
+        <i class="fas fa-question-circle fa-4x text-secondary mb-3"></i>
+        <h3>No Quizzes Yet</h3>
+        <p class="text-muted">Generate your first quiz using the form above.</p>
+    </div>
+</div>
+
+<!-- Quiz Modal -->
+<div class="modal fade" id="quizModal" tabindex="-1" aria-labelledby="quizModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="quizModalLabel">Quiz</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="quiz-content">
+                    <h4 id="quiz-title" class="mb-3"></h4>
+                    <div id="quiz-difficulty-badge" class="mb-3"></div>
+                    
+                    <form id="quiz-form">
+                        <div id="quiz-questions-container"></div>
+                        
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-primary" id="submit-quiz-btn">
+                                <i class="fas fa-check-circle me-2"></i> Submit Answers
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div id="quiz-results" class="d-none">
+                    <div class="text-center mb-4">
+                        <div class="display-1 mb-3" id="quiz-score"></div>
+                        <h4 id="score-message"></h4>
+                        <div class="progress mt-3" style="height: 20px;">
+                            <div class="progress-bar" id="score-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    
+                    <h5 class="mt-4 mb-3">Review Questions</h5>
+                    <div id="quiz-review"></div>
+                    
+                    <div class="d-grid mt-4">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                            <i class="fas fa-check-circle me-2"></i> Finish Review
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/quizzes.js') }}"></script>
+{% endblock %}

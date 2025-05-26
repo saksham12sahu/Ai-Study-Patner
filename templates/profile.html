@@ -1,0 +1,189 @@
+{% extends "layout.html" %} {% block title %}Profile{% endblock %} {% block
+content %}
+<div class="row">
+  <div class="col-lg-4">
+    <div class="card shadow mb-4">
+      <div class="card-header bg-primary text-white">
+        <h5 class="mb-0">
+          <i class="fas fa-user-circle me-2"></i>Profile Information
+        </h5>
+      </div>
+      <div class="card-body">
+        <div class="text-center mb-4">
+          <div
+            class="avatar bg-primary text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3"
+            style="width: 100px; height: 100px; font-size: 3rem"
+          >
+            {{ current_user.username[0]|upper }}
+          </div>
+          <h4>{{ current_user.username }}</h4>
+          <p class="text-muted">{{ current_user.email }}</p>
+          <p class="small text-muted">
+            Member since {{ current_user.created_at.strftime('%B %d, %Y') }}
+          </p>
+        </div>
+
+        <hr />
+
+        <form method="POST" action="{{ url_for('update_profile') }}">
+          {{ form.hidden_tag() }}
+
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input
+              type="text"
+              class="form-control"
+              id="username"
+              name="username"
+              value="{{ current_user.username }}"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              name="email"
+              value="{{ current_user.email }}"
+              required
+            />
+          </div>
+
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-save me-2"></i>Save Changes
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-8">
+    <div class="card shadow mb-4">
+      <div class="card-header bg-primary text-white">
+        <h5 class="mb-0"><i class="fas fa-key me-2"></i>Change Password</h5>
+      </div>
+      <div class="card-body">
+        <form method="POST" action="{{ url_for('change_password') }}">
+          {{ password_form.hidden_tag() }}
+
+          <div class="mb-3">
+            <label for="current_password" class="form-label"
+              >Current Password</label
+            >
+            <input
+              type="password"
+              class="form-control"
+              id="current_password"
+              name="current_password"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="new_password" class="form-label">New Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="new_password"
+              name="new_password"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="confirm_password" class="form-label"
+              >Confirm New Password</label
+            >
+            <input
+              type="password"
+              class="form-control"
+              id="confirm_password"
+              name="confirm_password"
+              required
+            />
+          </div>
+
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-key me-2"></i>Change Password
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="card shadow">
+      <div class="card-header bg-primary text-white">
+        <h5 class="mb-0">
+          <i class="fas fa-chart-bar me-2"></i>User Statistics
+        </h5>
+      </div>
+      <div class="card-body">
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="p-3 border rounded text-center">
+              <h3 class="h2 mb-0">{{ stats.flashcards_created }}</h3>
+              <p class="text-muted mb-0">Flashcards Created</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-3 border rounded text-center">
+              <h3 class="h2 mb-0">{{ stats.quizzes_completed }}</h3>
+              <p class="text-muted mb-0">Quizzes Completed</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-3 border rounded text-center">
+              <h3 class="h2 mb-0">{{ stats.study_time }}</h3>
+              <p class="text-muted mb-0">Study Minutes</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-4">
+          <div class="col-md-6">
+            <h5>Most Studied Topics</h5>
+            <ul class="list-group">
+              {% for topic, time in stats.top_topics %}
+              <li
+                class="list-group-item d-flex justify-content-between align-items-center"
+              >
+                {{ topic }}
+                <span class="badge bg-primary rounded-pill"
+                  >{{ time }} min</span
+                >
+              </li>
+              {% else %}
+              <li class="list-group-item">No topics studied yet</li>
+              {% endfor %}
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <h5>Recent Quiz Scores</h5>
+            <ul class="list-group">
+              {% for score in stats.recent_scores %}
+              <li
+                class="list-group-item d-flex justify-content-between align-items-center"
+              >
+                Quiz Score
+                <span
+                  class="badge {% if score >= 70 %}bg-success{% elif score >= 50 %}bg-warning{% else %}bg-danger{% endif %} rounded-pill"
+                  >{{ score }}%</span
+                >
+              </li>
+              {% else %}
+              <li class="list-group-item">No quizzes completed yet</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
